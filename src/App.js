@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import Test from './components/Test'
 import './App.css';
+import {useState} from 'react'
 
 function App() {
+
+
+const [state, setState] = useState([{num: 1}, {num: 2}])
+console.log(state)
+
+function change(id, parametro){
+  setState(prevState => prevState.map(item => item.num === id ? {...item, parametro: parametro} : item))
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Test 
+        change={change}
+        />
     </div>
   );
 }
